@@ -15,6 +15,7 @@ public class MessageStartLogin extends SlytherClientMessageBase {
 
     @Override
     public void read(MessageByteBuffer buffer, SlytherServer server, ConnectedClient client) {
-        Log.debug("Starting a login?");
+        Log.debug("Starting a login");
+        client.send(new MessageGotServerVersion())
     }
 }
