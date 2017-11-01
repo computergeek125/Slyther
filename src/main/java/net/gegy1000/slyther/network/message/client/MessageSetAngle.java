@@ -27,9 +27,9 @@ public class MessageSetAngle extends SlytherClientMessageBase {
     @Override
     public void read(MessageByteBuffer buffer, SlytherServer server, ConnectedClient client) {
         int read = buffer.readUInt8();
-        Log.debug("MessageSetAngle read() buffer: {}", read);
-        Log.debug("MessageSetAngle read() client.snake: {}", client.snake);
-        Log.debug("MessageSetAngle read() client.snake.wantedAngle: {}", client.snake.wantedAngle);
+        //Log.debug("MessageSetAngle read() buffer: {}", read);
+        //Log.debug("MessageSetAngle read() client.snake: {}", client.snake);
+        //Log.debug("MessageSetAngle read() client.snake.wantedAngle: {}", client.snake.wantedAngle);
         client.snake.wantedAngle = (float) ((read / 251.0F) * SlytherClient.PI_2);
     }
 }
