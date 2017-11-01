@@ -21,6 +21,7 @@ public class MessageGotServerVersion extends SlytherServerMessageBase {
 
     @Override
     public void write(MessageByteBuffer buffer, SlytherServer server, ConnectedClient client) {
+        buffer.writeUInt8('6');
         buffer.writeASCIIBytes(version);
     }
 

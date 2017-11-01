@@ -79,5 +79,7 @@ public class MessageClientRiddleAnswer extends SlytherClientMessageBase {
 
     @Override
     public void read(MessageByteBuffer buffer, SlytherServer server, ConnectedClient client) {
+        // Temporarially ignore this message by flushing it
+        Log.debug(buffer.readASCIIBytes());
     }
 }
