@@ -3,6 +3,7 @@ plugins {
     id "idea"
     id "eclipse"
     id "application"
+    id "CreateStartScripts"
 }
 
 version = "0.0.0"
@@ -10,6 +11,11 @@ group = "net.gegy1000"
 archivesBaseName = "slyther"
 mainClassName = "net.gegy1000.slyther.client.ClientMain"
 sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+
+task createServerStartScript(type: CreateStartScripts) {
+  mainClassName = net.gegy1000.slyther.server.ServerMain'
+  applicationName = 'slyther-server'
+}
 
 repositories {
     mavenCentral()
