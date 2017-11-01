@@ -71,8 +71,9 @@ public enum MessageHandler {
     }
 
     public SlytherClientMessageBase getClientMessage(MessageByteBuffer buffer) {
+        int type = buffer.readUInt8();
+        Log.debug("Message received! Type: {}, limit: {}", type, buffer.limit());
         if (buffer.limit() == 1) {
-            int type = buffer.readUInt8();
             if (type == 251) {
                 return new MessageClientPing();
             } else if (type == 253 || type == 254) {
@@ -82,7 +83,6 @@ public enum MessageHandler {
                 return new MessageSetAngle();
             }
         } else if (buffer.limit() > 1) {
-            int type = buffer.readUInt8();
             if (type == 's') {
                 return new MessageClientSetup();
             } else if (type == 252) {

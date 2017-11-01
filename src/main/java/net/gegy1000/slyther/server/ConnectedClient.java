@@ -42,6 +42,7 @@ public class ConnectedClient {
             protocolVersion = 1;
         }
         this.protocolVersion = protocolVersion;
+        Log.debug("Client version is {}", protocolVersion);
         if (protocolVersion >= 8) {
             send(new MessageSetup());
             server.scheduleTask(() -> {

@@ -5,6 +5,7 @@ import net.gegy1000.slyther.network.MessageByteBuffer;
 import net.gegy1000.slyther.network.message.SlytherClientMessageBase;
 import net.gegy1000.slyther.server.ConnectedClient;
 import net.gegy1000.slyther.server.SlytherServer;
+import net.gegy1000.slyther.util.Log;
 
 public class MessageSetAngle extends SlytherClientMessageBase {
     public float angle;
@@ -25,6 +26,10 @@ public class MessageSetAngle extends SlytherClientMessageBase {
 
     @Override
     public void read(MessageByteBuffer buffer, SlytherServer server, ConnectedClient client) {
-        client.snake.wantedAngle = (float) ((buffer.readUInt8() / 251.0F) * SlytherClient.PI_2);
+        int read = buffer.readUInt8();
+        Log.debug("MessageSetAngle read() buffer: {}", read);
+        Log.debug("MessageSetAngle read() client.snake: {}", client.snake);
+        Log.debug("MessageSetAngle read() client.snake.wantedAngle: {}", client.snake.wantedAngle);
+        client.snake.wantedAngle = (float) ((read / 251.0F) * SlytherClient.PI_2);
     }
 }
