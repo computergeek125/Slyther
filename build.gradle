@@ -3,7 +3,6 @@ plugins {
     id "idea"
     id "eclipse"
     id "application"
-    id "CreateStartScripts"
 }
 
 version = "0.0.0"
@@ -15,6 +14,14 @@ sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 task createServerStartScript(type: CreateStartScripts) {
   mainClassName = 'net.gegy1000.slyther.server.ServerMain'
   applicationName = 'slyther-server'
+  classpath = startScripts.classpath
+  outputDir = startScripts.outputDir
+}
+
+applicationDistribution.into("bin") {
+    duplicatesStrategy= DuplicatesStrategy.EXCLUDE
+    from(createServerStartScript)
+    fileMode = 0755
 }
 
 repositories {
