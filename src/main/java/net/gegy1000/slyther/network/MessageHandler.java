@@ -79,7 +79,7 @@ public enum MessageHandler {
             } else if (type == 253 || type == 254) {
                 return new MessageAccelerate(type == 253);
             } else if (type == 99) {
-                return new MessageGotServerVersion("Slyther-0.0.0");
+                return new MessageStartLogin();
             } else {
                 buffer.skipBytes(-1);
                 return new MessageSetAngle();
